@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('list', 'AnimalController@list');
+
+Route::get('show/{id}', 'AnimalController@show');
+
+// helper class, generates all routes for user authentication
+Auth::routes();
+
+// assigns the /home URIs to HomeController with index function. This route is also named as home
+Route::get('/home', 'HomeController@index')->name('home');
