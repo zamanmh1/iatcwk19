@@ -15,6 +15,7 @@ class CreateAnimalsTable extends Migration
     {
         Schema::create('animals', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('userid')->unsigned();
             $table->string('name', 30);
             $table->year('birth_year');
             $table->mediumText('description')->nullable();
@@ -23,6 +24,12 @@ class CreateAnimalsTable extends Migration
             $table->enum('type_of_pet',['cat','dog','bird','rabbit', 'horse','ferret',
             'fish', 'rat/mice', 'amphibian','reptile'])->default('dog');
             $table->timestamps();
+
+            /*
+              Define a userid colum in animals table
+              which references id column in users table
+            */
+            $table->foreign('userid')->references('id')->on('users');
         });
     }
 
