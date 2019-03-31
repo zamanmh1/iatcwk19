@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // associate animals to a user
+    public function animal() {
+      return $this->hasMany('App\Animal', 'id');
+    }
 }

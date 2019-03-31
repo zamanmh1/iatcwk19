@@ -13,6 +13,7 @@ class CreateAnimalsTable extends Migration
      */
     public function up()
     {
+      
         Schema::create('animals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('userid')->unsigned();
@@ -31,6 +32,7 @@ class CreateAnimalsTable extends Migration
             */
             $table->foreign('userid')->references('id')->on('users');
         });
+
     }
 
     /**

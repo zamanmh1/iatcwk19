@@ -13,6 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
@@ -23,7 +24,12 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-    }
+        
+
+        Schema::table('users', function(Blueprint $table) {
+          $table->boolean('pending', 0); // A user will initially be created in search of adoption
+        });
+      }
 
     /**
      * Reverse the migrations.
