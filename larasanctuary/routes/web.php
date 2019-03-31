@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PageController@index');
+
+Route::get('/about', 'PageController@about');
 
 Route::get('list', 'AnimalController@list');
 
