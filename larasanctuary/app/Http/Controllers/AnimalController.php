@@ -14,7 +14,7 @@ class AnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $animals = Animal::all();
+    {   $animals = Animal::orderBy('name','asc')->paginate(10);
         return view('animals.index')->with('animals',$animals);
     }
 
@@ -47,7 +47,8 @@ class AnimalController extends Controller
      */
     public function show($id)
     {
-        //
+        $animal = Animal::find($id);
+        return view('animals.show')->with('animal',$animal);
     }
 
     /**
