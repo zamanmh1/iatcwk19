@@ -15,7 +15,11 @@
                     @endif
 
                     You are logged in!
+                    <div >
+                      <a href="/animals" class="btn btn-primary">Animals available for adoption</a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

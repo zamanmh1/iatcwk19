@@ -21,4 +21,4 @@ Route::resource('animals', 'AnimalController');
 Auth::routes();
 
 // assigns the /home URIs to HomeController with index function. This route is also named as home
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('home');
