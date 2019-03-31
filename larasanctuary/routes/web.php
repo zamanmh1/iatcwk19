@@ -15,9 +15,7 @@ Route::get('/', 'PageController@index');
 
 Route::get('/about', 'PageController@about');
 
-Route::get('list', 'AnimalController@list');
-
-Route::get('show/{id}', 'AnimalController@show');
+Route::resource('animals', 'AnimalController');
 
 // helper class, generates all routes for user authentication
 Auth::routes();
