@@ -13,10 +13,10 @@ class CreateAnimalsTable extends Migration
      */
     public function up()
     {
-      
+
         Schema::create('animals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('userid')->unsigned();
+            $table->bigInteger('userid')->nullable(); // as relationship wouldn't be establised at this stage
             $table->string('name', 30);
             $table->year('birth_year');
             $table->mediumText('description')->nullable();
@@ -26,11 +26,6 @@ class CreateAnimalsTable extends Migration
             'fish', 'rat/mice', 'amphibian','reptile'])->default('dog');
             $table->timestamps();
 
-            /*
-              Define a userid colum in animals table
-              which references id column in users table
-            */
-            $table->foreign('userid')->references('id')->on('users');
         });
 
     }
