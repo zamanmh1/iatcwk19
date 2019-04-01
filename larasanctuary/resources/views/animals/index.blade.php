@@ -25,6 +25,7 @@
                     <td>{{$animal['birth_year']}}</td>
                     <td>{{$animal['description']}}</td>
                     <td>{{$animal['image']}}</td>
+                    <td>{{$animal['type_of_pet']}}</td>
 
                     <td><a href="{{action('AnimalController@show',$animal['id'])}}" class="btn
                        btn-primary">Details</a></td>

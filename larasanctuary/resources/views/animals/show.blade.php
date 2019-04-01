@@ -40,14 +40,20 @@
             </table>
           <table>
             <tr>
+
               <td>
-                <a href="/animals" class="btn btn-primary" role="button">Back to the list
+                <a href ="{{action('AnimalController@update', $animal['id'])}} "  class="btn btn-primary" role="button">Make an adoption request</a>
+              </td>
+
+              <td>
+                <a href="/animals" class="btn btn-secondary" role="button">Back to the list
                 </a>
               </td>
               <td>
                 <a href="{{action('AnimalController@edit', $animal['id'])}}" class="btn btn-warning">Edit
                 </a>
               </td>
+
               <td>
                 <form action="{{action('AnimalController@destroy', $animal['id'])}}" method="post">
                   @csrf
