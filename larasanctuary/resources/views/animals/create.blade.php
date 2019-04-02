@@ -8,11 +8,12 @@
       <div class="col-md-10">
         <div class="card">
           <div class="card-header">Add a new animal for adoption</div>
+
           <!-- display the errors -->
           @if ($errors->any())
             <div class="alert alert-danger">
               <ul> @foreach ($errors->all() as $error)
-                <li>{{ error }}</li @endforeach
+                <li>{{ $error }}</li> @endforeach
               </ul>
 
             </div><br /> @endif
@@ -40,12 +41,12 @@
 
                <div class="col-md-8">
                  <label>Description</label>
-                 <textarea rows="4" cols="50" name="description"> Notes about the animal</textarea>
+                 <textarea rows="4" cols="50" name="description"> Notes about the pet</textarea>
                </div>
 
                <div class="col-md-8">
-                 <label>Type of animal</label>
-                 <select name="category">
+                 <label>Type of pet</label>
+                 <select name="type_of_pet">
                    <option value="cat">Cat</option>
                    <option value="dog">Dog</option>
                    <option value="bird">Rabbit</option>

@@ -11,27 +11,25 @@
                 <td>
                   <b>Name
                     </th>
-                <td> {{$animal['name']}}
-                </td>
+                <td> {{$animal['name']}}</td>
               </tr>
+
               <tr>
-                <th>Birth year
-                </th>
-                <td>{{$animal->birth_year}}
-                </td>
+                <th>Birth year</th>
+                <td>{{$animal->birth_year}}</td>
               </tr>
+
               <tr>
-                <td>Type
+                <td>Type of pet</td>
               </th>
-              <td>{{$animal->type_of_pet}}
-              </td>
+              <td>{{$animal->type_of_pet}}</td>
               </tr>
+
             <tr>
-              <th>Description
-              </th>
-              <td style="max-width:150px;" >{{$animal->description}}
-              </td>
+              <th>Description</th>
+              <td style="max-width:150px;" >{{$animal->description}}</td>
             </tr>
+
             <tr>
               <td colspan='2' >
                 <img style="width:100%;height:100%" src="{{ asset('storage/images/'.$animal->image)}}">
@@ -42,29 +40,27 @@
             <tr>
 
               <td>
-                <a href ="{{action('AnimalController@update', $animal['id'])}} "  class="btn btn-primary" role="button">Make an adoption request</a>
+                <a href="/animals" class="btn btn-primary" role="button">Make an adoption request</a>
               </td>
 
               <td>
-                <a href="/animals" class="btn btn-secondary" role="button">Back to the list
-                </a>
+                <a href="/animals" class="btn btn-secondary" role="button">Back to the list</a>
               </td>
+
               <td>
-                <a href="{{action('AnimalController@edit', $animal['id'])}}" class="btn btn-warning">Edit
-                </a>
+                <a href="{{action('AnimalController@edit', $animal['id'])}}" class="btn btn-warning">Edit</a>
               </td>
 
               <td>
                 <form action="{{action('AnimalController@destroy', $animal['id'])}}" method="post">
                   @csrf
-                  <input name="_method" type="hidden" value="DELETE">
-                  <button class="btn btn-danger" type="submit">Delete
-                  </button>
+                  <input name="_method" type="hidden" value="DELETE" />
+                  <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
               </td>
             </tr>
           </table>
-        </div>
+          </div>
       </div>
     </div>
   </div>

@@ -20,5 +20,5 @@ Route::resource('animals', 'AnimalController');
 // helper class, generates all routes for user authentication
 Auth::routes();
 
-// assigns the /home URIs to HomeController with index function. This route is also named as home
-Route::get('/dashboard', 'DashboardController@index')->name('home');
+// assigns the /dashboard URIs to DashboardController with index function. This route is also named as Dashboard
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

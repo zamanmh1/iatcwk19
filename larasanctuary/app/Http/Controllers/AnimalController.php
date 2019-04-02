@@ -15,7 +15,7 @@ class AnimalController extends Controller
      */
     public function index()
     {   $animals = Animal::orderBy('name','asc')->paginate(10);
-        return view('animals.index')->with('animals',$animals);
+        return view('animals.index', compact('animals'));
     }
 
     /**
@@ -24,6 +24,17 @@ class AnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+    {
+      return view('animals.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
       // form validation
     $animal = $this->validate(request(), [
@@ -40,7 +51,7 @@ class AnimalController extends Controller
     $fileNameWithExtension = $request->file('image')->getClientOriginalName();
     // get the file name only
     $fileName = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
-    // get the extenstion
+    // get the extension
     $extension = $request->file('image')->getClientOriginalExtension();
     // get the filename to store
     $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
@@ -65,18 +76,6 @@ class AnimalController extends Controller
 
   // generate a redirect HTTP response with a success message
   return back()->with('success', 'animal has been added');
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -88,7 +87,7 @@ class AnimalController extends Controller
     public function show($id)
     {
         $animal = Animal::find($id);
-        return view('animals.show')->with('animal',$animal);
+        return view('animals.show',compact('animal'));
     }
 
     /**
@@ -99,7 +98,8 @@ class AnimalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $animal = Animal::find($id);
+        return view('animals.edit', compact('animal'));
     }
 
     /**
@@ -111,8 +111,27 @@ class AnimalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $animal = Animal::find($id);
+        $this->validate(request(), [
+          'reg_no' => 'required',
+          'daily_rate' => 'required|numeric'
+        ]);
+
+        $animal->name = $request->input('name');
+        $animal->description = $request->input('description');
+        $animal->birth_year = $request->input('birth_year');
+        $animal->type_of_pet = $request->input('type_of_pet');
+        $animal->created_at = now();
+        $animal -> image = $fileNameToStore;
+
+        // save the animal object
+        $animal->save();
+
+        // generate a redirect HTTP response with a success message
+        return back()->with('success', 'animal has been updated');
+      }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -122,6 +141,8 @@ class AnimalController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $animal = Animal::find($id);
+      $animal->delete();
+      return redirect('animals')->with('success', 'Animal has been deleted');
     }
 }
