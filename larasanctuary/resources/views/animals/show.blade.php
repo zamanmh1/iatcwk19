@@ -44,7 +44,7 @@
               </td>
 
               <td>
-                <a href="/animals" class="btn btn-secondary" role="button">Back to the list</a>
+                <a href="{{ URL::previous() }}" class="btn btn-secondary" role="button">Back to the list</a>
               </td>
 
               <td>
