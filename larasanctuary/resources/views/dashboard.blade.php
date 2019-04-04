@@ -22,9 +22,15 @@
                     @endif
 
                     @if (Auth::user()->role == 0)
-                      <div >
-                        <a href="/animals" class="btn btn-primary">Animals available for adoption</a>
+                      <div class="container">
+                        <div class="row">
+                          <div class="btn-group" role="group" aria-label="user options" >
+                            <a href="/animals" class="btn btn-primary">Animals available for adoption</a>
+                            <a href="/animals" class="btn btn-secondary">View adoption requests and check status</a>
+                          </div>
+                        </div>
                       </div>
+
                     @endif
                 </div>
             </div>
