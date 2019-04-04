@@ -15,11 +15,18 @@
                     @endif
 
                     You are logged in!
-                    <div >
-                      <a href="/animals" class="btn btn-primary">Animals available for adoption</a>
-                    </div>
-                </div>
+                    @if (Auth::user()->role == 1)
+                      <div>
+                        <a href ="/animals" class="btn btn-primary">View and approve adoption requests</a>
+                      </div>
+                    @endif
 
+                    @if (Auth::user()->role == 0)
+                      <div >
+                        <a href="/animals" class="btn btn-primary">Animals available for adoption</a>
+                      </div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
