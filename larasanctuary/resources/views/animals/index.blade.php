@@ -29,15 +29,22 @@
 
                     <td><a href="{{action('AnimalController@show',$animal['id'])}}" class="btn
                        btn-primary">Details</a></td>
-                    <td><a href="{{action('AnimalController@edit', $animal['id'])}}" class="btn
-                      btn-warning">Edit</a></td>
-                    <td>
-                      <form action="{{action('AnimalController@destroy', $animal['id'])}}"
-                        method="post"> @csrf
-                        <input name="_method" type="hidden" value="DELETE">
-                        <button class="btn btn-danger" type="submit">Delete</button>
-                      </form>
-                    </td>
+
+                    @if (Auth::user()->role == 1)
+
+                      <td><a href="{{action('AnimalController@edit', $animal['id'])}}" class="btn
+                        btn-warning">Edit</a>
+                      </td>
+
+                      <td>
+                        <form action="{{action('AnimalController@destroy', $animal['id'])}}"
+                          method="post"> @csrf
+                          <input name="_method" type="hidden" value="DELETE">
+                          <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                      </td>
+
+                    @endif
                   </tr>
                 @endforeach
               </tbody>
