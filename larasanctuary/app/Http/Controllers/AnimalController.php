@@ -27,11 +27,12 @@ class AnimalController extends Controller
      */
     public function create()
     {
-      if (Gate::denies('create')){
+      if (Gate::allows('usertype')) {
+        return view('animals.create');
+      } else {
         return "Unauthorised action";
-
       }
-      return view('animals.create');
+
     }
 
     /**

@@ -36,7 +36,7 @@
                     <a class="nav-link" href = "{{url('animals')}}">List pets</a>
                   </li>
 
-                  @if (Auth::user()->role == 1)
+                  @if (Gate::allows('usertype'))
                     <li class="nav-item">
                       <a class="nav-link" href = "{{url('animals/create')}}">Create pet</a>
                     </li>

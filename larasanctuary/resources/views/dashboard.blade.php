@@ -15,26 +15,27 @@
                     @endif
 
                     You are logged in!
-                    @if (Auth::user()->role == 1)
-                      <div>
-                        <a href ="/animals" class="btn btn-primary">View and approve adoption requests</a>
-                      </div>
-                    @endif
-
-                    @if (Auth::user()->role == 0)
+                    @if (Gate::allows('usertype'))
                       <div class="container">
-                        <div class="row">
-                          <div class="btn-group" role="group" aria-label="user options" >
-                            <a href="/animals" class="btn btn-primary">Animals available for adoption</a>
-                            <a href="/animals" class="btn btn-secondary">View adoption requests and check status</a>
-                          </div>
+                        <div class="btn-group" role="group" aria-label="admin options">
+                          <a href ="/animals" class="btn btn-primary">View and approve adoption requests</a>
+                          <a href ="/animals" class="btn btn-secondary">See all animals including owners</a>
                         </div>
                       </div>
 
+                      @else
+                        <div class="container">
+                          <div class="row">
+                            <div class="btn-group" role="group" aria-label="user options" >
+                              <a href="/animals" class="btn btn-primary">Animals available for adoption</a>
+                              <a href="/animals" class="btn btn-secondary">View adoption requests and check status</a>
+                            </div>
+                          </div>
+                        </div>
                     @endif
                 </div>
-            </div>
-        </div>
-    </div>
+          </div>
+      </div>
+  </div>
 </div>
 @endsection

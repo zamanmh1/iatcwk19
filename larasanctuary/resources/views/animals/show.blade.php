@@ -47,17 +47,19 @@
                 <a href="{{ URL::previous() }}" class="btn btn-secondary" role="button">Back to the list</a>
               </td>
 
-              <td>
-                <a href="{{action('AnimalController@edit', $animal['id'])}}" class="btn btn-warning">Edit</a>
-              </td>
+              @if (Gate::allows('usertype'))
+                <td>
+                  <a href="{{action('AnimalController@edit', $animal['id'])}}" class="btn btn-warning">Edit</a>
+                </td>
 
-              <td>
-                <form action="{{action('AnimalController@destroy', $animal['id'])}}" method="post">
-                  @csrf
-                  <input name="_method" type="hidden" value="DELETE" />
-                  <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-              </td>
+                <td>
+                  <form action="{{action('AnimalController@destroy', $animal['id'])}}" method="post">
+                    @csrf
+                    <input name="_method" type="hidden" value="DELETE" />
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                  </form>
+                </td>
+              @endif
             </tr>
           </table>
           </div>
