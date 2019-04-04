@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Animal;
+use Gate;
+
 
 class AnimalController extends Controller
 {
@@ -25,6 +27,10 @@ class AnimalController extends Controller
      */
     public function create()
     {
+      if (Gate::denies('create')){
+        return "Unauthorised action";
+
+      }
       return view('animals.create');
     }
 
