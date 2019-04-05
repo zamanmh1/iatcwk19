@@ -37,8 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     // associate animals to a user
     public function animal() {
       return $this->hasMany('App\Animal', 'id');
     }
+    
+
 }
