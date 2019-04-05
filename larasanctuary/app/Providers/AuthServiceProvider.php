@@ -28,8 +28,9 @@ class AuthServiceProvider extends ServiceProvider
         //
     }
 
+    // if this returns 1, user is admin, else user is staff
     public function registerPolicies(){
-      Gate::define('usertype', function ($user){
+      Gate::define('user', function ($user){
         return $user->role;
 
       });

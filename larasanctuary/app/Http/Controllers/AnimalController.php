@@ -27,7 +27,7 @@ class AnimalController extends Controller
      */
     public function create()
     {
-      if (Gate::allows('usertype')) {
+      if (Gate::allows('user')) {
         return view('animals.create');
       } else {
         return "Unauthorised action";

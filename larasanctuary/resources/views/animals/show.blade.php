@@ -47,7 +47,7 @@
                 <a href="{{ URL::previous() }}" class="btn btn-secondary" role="button">Back to the list</a>
               </td>
 
-              @if (Gate::allows('usertype'))
+              @if (Gate::allows('user'))
                 <td>
                   <a href="{{action('AnimalController@edit', $animal['id'])}}" class="btn btn-warning">Edit</a>
                 </td>

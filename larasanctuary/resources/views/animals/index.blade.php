@@ -30,7 +30,7 @@
                     <td><a href="{{action('AnimalController@show',$animal['id'])}}" class="btn
                        btn-primary">Details</a></td>
 
-                    @if (Gate::allows('usertype'))
+                    @if (Gate::allows('user'))
 
                       <td><a href="{{action('AnimalController@edit', $animal['id'])}}" class="btn
                         btn-warning">Edit</a>
