@@ -19,17 +19,19 @@ class AnimalsTableSeeder extends Seeder
         // get all existing user ids into a $users array
         $users = User::all()->pluck('id')->toArray();
 
-        // generate 100 records for the animals table
-        foreach (range(1,100) as $index){
+        // generate 10 records for the animals table
+        foreach (range(1,10) as $index){
           DB::table('animals')->insert([
-            'id'=>$faker->randomNumber($nbDigits = 7, $strict = false),
+            //'id'=>$faker->randomNumber($nbDigits = 7, $strict = false),
+            'userid' => $faker->randomElement($users),
             'name' =>$faker->firstName(),
             'birth_year' =>$faker->year($max = 'now'),
             'description'=>$faker->sentence($nbWords = 6, $variableNbWords = true),
             'type_of_pet'=>$faker->randomElement($array=array('cat','dog','bird',
             'rabbit', 'horse','ferret',
             'fish', 'rat/mice',
-            'amphibian','reptile'))
+            'amphibian','reptile')),
+            'is_available' => 0
           ]);
         }
     }

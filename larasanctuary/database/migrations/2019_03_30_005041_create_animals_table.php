@@ -16,13 +16,17 @@ class CreateAnimalsTable extends Migration
 
         Schema::create('animals', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
+            $table->bigInteger('userid')->unsigned();
             $table->string('name', 30);
             $table->year('birth_year');
             $table->mediumText('description')->nullable();
             $table->string('image', 256)->nullable();
             $table->enum('type_of_pet',['cat','dog','bird','rabbit', 'horse','ferret',
             'fish', 'rat/mice', 'amphibian','reptile'])->default('dog');
+            $table->boolean('is_available')->default(1);
             $table->timestamps();
+
+            $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
 
         });
 
