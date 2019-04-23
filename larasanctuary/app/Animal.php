@@ -16,7 +16,11 @@ class Animal extends Model
       return $this->belongsTo('App\User','id');
     }
 
-
-
+    /**
+    * Get the animal associated to the adoption
+    */
+    public function adoption(){
+      return $this->belongsTo('App\Adoption', 'id');
+    }
 
 }

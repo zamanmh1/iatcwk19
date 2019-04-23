@@ -42,6 +42,14 @@ class User extends Authenticatable
     public function animal() {
       return $this->hasMany('App\Animal', 'id');
     }
-    
+
+    /**
+    * Get the user that owns the adoption
+    */
+    public function adoption(){
+      return $this->belongsTo('App\Adoption', 'id');
+    }
+
+
 
 }
