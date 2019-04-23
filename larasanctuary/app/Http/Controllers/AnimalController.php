@@ -71,6 +71,7 @@ class AnimalController extends Controller
 
   // create a animal object and set its values from the input
   $animal = new Animal;
+  $animal->userid = auth()->user()->id;
   $animal->name = $request->input('name');
   $animal->description = $request->input('description');
   $animal->birth_year = $request->input('birth_year');
