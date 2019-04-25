@@ -15,7 +15,7 @@
                     @endif
 
                     You are logged in!
-                    @if (Gate::allows('usertype'))
+                    @if (Gate::allows('user'))
                       <div class="container">
                         <div class="btn-group" role="group" aria-label="admin options">
                           <a href ="/animals" class="btn btn-primary">View and approve adoption requests</a>
@@ -28,7 +28,7 @@
                           <div class="row">
                             <div class="btn-group" role="group" aria-label="user options" >
                               <a href="/animals" class="btn btn-primary">Animals available for adoption</a>
-                              <a href="/animals" class="btn btn-secondary">View adoption requests and check status</a>
+                              <a href="/animals" class="btn btn-secondary">View my adoption requests and check status</a>
                             </div>
                           </div>
                         </div>
