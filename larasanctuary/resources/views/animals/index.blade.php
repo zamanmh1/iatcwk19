@@ -49,7 +49,7 @@
                 @endforeach
               </tbody>
             </table>
-            {{$animals -> links()}}
+          <!-- Did have pagination here but removed for noe -->
           </div>
         </div>
       </div>
