@@ -16,8 +16,17 @@ class AnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $animals = Animal::orderBy('name','asc')->paginate(10);
+    {
+        // users to only see available animals, admin can see all
+        if (Gate::denies('user')){
+          $animals = Animal::where('is_available',1)->orderBy('name', 'asc')->get();
+          return view('animals.index', compact('animals'));
+        }
+        $animals = Animal::all()->toArray();
         return view('animals.index', compact('animals'));
+
+
+
     }
 
     /**
@@ -71,7 +80,7 @@ class AnimalController extends Controller
 
   // create a animal object and set its values from the input
   $animal = new Animal;
-  $animal->userid = auth()->user()->id;
+  $animal->userid = auth()->user()->id; // initially the admin's id
   $animal->name = $request->input('name');
   $animal->description = $request->input('description');
   $animal->birth_year = $request->input('birth_year');
