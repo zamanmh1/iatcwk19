@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">Animals available for adoption</div>
+          <div class="card-header">Animals</div>
 
           <div class="card-body">
             <table class = "table table-striped">

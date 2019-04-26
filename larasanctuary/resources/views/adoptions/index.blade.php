@@ -25,7 +25,7 @@
 
         @if(Gate::allows('user'))
           <div class="card">
-            <div class="card-header">Display All Requests</div>
+            <div class="card-header">Display all requests</div>
             <div class="card-body">
               <table class="table table-striped">
                 <thead>
@@ -63,7 +63,7 @@
                                 @if (Gate::allows('user'))
                                   @if ($adoption['status'] == 'pending')
                                     <td><a href="{{action('AdoptionController@approve', $adoption['id'])}}" class="btn
-                                      btn-warning">Approve</a>
+                                      btn-primary">Approve</a>
                                     </td>
                                     <td><a href="{{action('AdoptionController@deny', $adoption['id'])}}" class="btn
                                       btn-warning">Deny</a>

@@ -10,6 +10,17 @@ use Gate;
 
 class AnimalController extends Controller
 {
+
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+      $this->middleware('auth'); // protects functions from being access w/o login
+  }
+  
   /**
   * Display a listing of the resource.
   *

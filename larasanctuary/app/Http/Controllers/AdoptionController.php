@@ -12,6 +12,15 @@ use Illuminate\Http\Request;
 class AdoptionController extends Controller
 {
   /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+      $this->middleware('auth'); // protects functions from being access w/o login
+  }
+  /**
   * Display a listing of the resource.
   *
   * @return \Illuminate\Http\Response
@@ -45,28 +54,38 @@ class AdoptionController extends Controller
     $adoption->status = 'pending';
     $adoption->save();
 
-    return redirect('animals')->with('success', 'Request received');
+    return back()->with('success', 'Request received');
   }
 
   public function approve($id) {
     // admin approves Request
-    $adoption = Adoption::find($id);
-    $animal = Animal::find($adoption->animalid);
-    $adoption->updated_at = now();
-    $adoption->status = 'approved';
-    $animal->userid = $adoption->userid;
-    $animal->is_available = 0;
-    $animal->save();
-    $adoption->save();
-    return back()->with('success', 'Approved');
+    if (Gate::allows('user')) {
+      $adoption = Adoption::find($id);
+      $animal = Animal::find($adoption->animalid);
+      $adoption->updated_at = now();
+      $adoption->status = 'approved';
+      $animal->userid = $adoption->userid;
+      $animal->is_available = 0;
+      $animal->save();
+      $adoption->save();
+      return back()->with('success', 'Approved');
+    }
+    return "Unauthorised attempt at approving a request";
+
 
   }
 
   public function deny($id) {
-    $adoption = Adoption::find($id);
-    $adoption->updated_at = now();
-    $adoption->status = 'denied';
-    $adoption->save();
-    return back()->with('success', 'Denied');
+    // admin denies request
+
+    if (Gate::allows('user')) {
+      $adoption = Adoption::find($id);
+      $adoption->updated_at = now();
+      $adoption->status = 'denied';
+      $adoption->save();
+      return back()->with('success', 'Denied');
+    }
+    return "Unauthorised attempt at denying a request";
+
   }
 }
