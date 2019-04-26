@@ -115,6 +115,9 @@ class AnimalController extends Controller
   public function show($id)
   {
     $animal = Animal::find($id);
+    if ($animal["is_available"] == 0 && Gate::denies('user')) {
+      return "This animal has already been adopted";
+    }
     return view('animals.show',compact('animal'));
   }
 
