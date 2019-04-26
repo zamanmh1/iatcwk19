@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@section('title', 'Adoptions')
 
   <!-- display the errors -->
   @if ($errors->any())

@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('content')
+@section('title', 'Animal detail')
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 ">
         <div class="card">
-          <div class="card-header">Animals available for adoption</div>
+          <div class="card-header">Animal details</div>
           <div class="card-body">
             <table class="table table-striped" border="1" >
               <tr>
