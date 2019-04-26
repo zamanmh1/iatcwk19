@@ -28,7 +28,7 @@ class AdoptionController extends Controller
   public function index() {
     // bringing all models together
     $animals = Animal::all()->toArray();
-    $adoptions = Adoption::all()->toArray();
+    $adoptions = Adoption::orderBy('updated_at', 'desc')->get();
     $users = User::all()->toArray();
 
     return view('adoptions.index', compact('animals', 'adoptions', 'users'));
