@@ -18,7 +18,7 @@
                     @if (Gate::allows('user'))
                       <div class="container">
                         <div class="btn-group" role="group" aria-label="admin options">
-                          <a href ="/animals" class="btn btn-primary">View and approve adoption requests</a>
+                          <a href ="/adoptions" class="btn btn-primary">View and approve adoption requests</a>
                           <a href ="/animals" class="btn btn-secondary">See all animals including owners</a>
                         </div>
                       </div>
@@ -28,7 +28,7 @@
                           <div class="row">
                             <div class="btn-group" role="group" aria-label="user options" >
                               <a href="/animals" class="btn btn-primary">Animals available for adoption</a>
-                              <a href="/animals" class="btn btn-secondary">View my adoption requests and check status</a>
+                              <a href="/adoptions" class="btn btn-secondary">View my adoption requests and check status</a>
                             </div>
                           </div>
                         </div>

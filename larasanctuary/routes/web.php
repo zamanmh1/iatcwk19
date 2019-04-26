@@ -22,3 +22,9 @@ Auth::routes();
 
 // assigns the /dashboard URIs to DashboardController with index function. This route is also named as Dashboard
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/submit/{animalid}', 'AdoptionController@submit')->name('adoption');
+
+Route::get('adoptions', 'AdoptionController@index');
+Route::get('deny/{animalid}','AdoptionController@deny');
+Route::get('approve/{animalid}','AdoptionController@approve');

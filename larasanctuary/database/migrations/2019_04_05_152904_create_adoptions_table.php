@@ -18,7 +18,7 @@ class CreateAdoptionsTable extends Migration
             $table->timestamps();
             $table->bigInteger('userid')->unsigned();
             $table->bigInteger('animalid')->unsigned();
-            $table->enum('status', ['appproved','denied','pending']);
+            $table->enum('status', ['approved','denied','pending']);
         });
 
 

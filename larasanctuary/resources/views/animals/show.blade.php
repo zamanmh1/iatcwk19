@@ -40,7 +40,7 @@
               <tr>
 
                 <td>
-                  <a href="/animals" class="btn btn-primary" role="button">Make an adoption request</a>
+                  <a href="{{action('AdoptionController@submit', $animal['id'])}}" class="btn btn-primary" role="button">Make an adoption request</a>
                 </td>
 
                 <td>
