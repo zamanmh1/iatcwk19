@@ -20,7 +20,7 @@ class AnimalController extends Controller
   {
       $this->middleware('auth'); // protects functions from being access w/o login
   }
-  
+
   /**
   * Display a listing of the resource.
   *
@@ -196,8 +196,12 @@ class AnimalController extends Controller
   */
   public function destroy($id)
   {
-    $animal = Animal::find($id);
-    $animal->delete();
-    return redirect('animals')->with('success', 'Animal has been deleted');
+    if (Gate::allows('user')) {
+      $animal = Animal::find($id);
+      $animal->delete();
+      return redirect('animals')->with('success', 'Animal has been deleted');
+    }
+    return "Unauthorised attempt at deleting an animal";
+
   }
 }
