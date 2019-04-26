@@ -31,7 +31,6 @@
                        btn-primary">Details</a></td>
 
                     @if (Gate::allows('user'))
-
                       <td><a href="{{action('AnimalController@edit', $animal['id'])}}" class="btn
                         btn-warning">Edit</a>
                       </td>
@@ -49,7 +48,7 @@
                 @endforeach
               </tbody>
             </table>
-          <!-- Did have pagination here but removed for noe -->
+          <!-- Did have pagination here but removed for now -->
           </div>
         </div>
       </div>
