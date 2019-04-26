@@ -36,6 +36,7 @@
                     <th>Animal ID</th>
                     <th>Animal Name</th>
                     <th>Status</th>
+                    <th>Date</th>
 
                     <th colspan="3">Action</th>
                   </tr>
@@ -56,6 +57,7 @@
                               <td>{{$adoption['animalid']}}</td>
                               <td>{{$animal['name']}}</td>
                               <td>{{$adoption['status']}}</td>
+                              <td>{{$adoption['updated_at']}}</td>
 
                               <td><a href="{{action('AnimalController@show', $animal['id'])}}" class="btn
                                 btn- primary">Details</a></td>
@@ -95,6 +97,7 @@
                       <th>Animal ID</th>
                       <th>Animal Name</th>
                       <th>Status</th>
+                      <th>Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -110,6 +113,7 @@
                               <td>{{$adoption['animalid']}}</td>
                               <td>{{$animal['name']}}</td>
                               <td>{{$adoption['status']}}</td>
+                              <td>{{$adoption['updated_at']}}</td>
                             @endif
                           @endforeach
                         @endif
