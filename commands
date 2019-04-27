@@ -1,1 +1,4 @@
 php composer.phar dumpautoload -d iatcwk19/larasanctuary/
+
+connecting storage on production server
+ln -s ~/laravel/storage/app/public/ storage
