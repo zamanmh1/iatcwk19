@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@section('title', 'Adoptions')
+  @section('title', 'Adoptions')
 
   <!-- display the errors -->
   @if ($errors->any())
@@ -120,7 +120,15 @@
                         @endif
                       @endforeach
                     @endif
-                  </div>
+                  </table>
+                  <table>
+                    <tr>
+                      <td>
+                        <a href="{{ URL::previous() }}" class="btn btn-primary" role="button">Back to the list</a>
+                      </td>
+                    </tr>
+                  </table>
                 </div>
               </div>
-            @endsection
+            </div>
+          @endsection
